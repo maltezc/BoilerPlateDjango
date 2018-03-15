@@ -17,15 +17,13 @@ class QuestionList(generic.ListView):
     # ^ took out SelectRelatedMixin, replace when ready
     model = models.Question
 
-    def get_queryset(self):
-        """Return the last five published questions."""
-        return models.Question.objects.all()
+
 
 class CreateQuestion(generic.CreateView):
     model = models.Question
     # model = models.Answer
     form = QuestionForm
-    fields = ('question', )
+    fields = ('question', 'answer')
     success_url = reverse_lazy('questions:all')
 
 
