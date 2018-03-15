@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-md-8">
+	{% for question in question_list %}
+        {% include "questions/_question.html" %}
+	{% endfor %}
+</div>
+
+This is the questions list page and
+
+There should be a list of questions on this page
+
+    <a href="{% url "questions:create" %}">Post a question</a>
+
+
+{% endblock %}

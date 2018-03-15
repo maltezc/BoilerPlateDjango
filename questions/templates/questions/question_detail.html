@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    this is the question detail view
+
+{# TODO: who posted it#}
+
+{# TODO: what is the question#}
+
+{# TODO: what is the answer#}
+
+{# TODO: what are comments?#}
+
+
+{% endblock %}
+
+
+{#{% extends "questions/question_base.html" %}#}
+
+{% block post_content %}
+<div class="col-md-8">
+    {% include "questions/_question.html" %}
+</div>
+{% endblock %}
+
+
+
+
