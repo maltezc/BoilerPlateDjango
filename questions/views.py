@@ -37,6 +37,7 @@ class CreateQuestion(generic.CreateView):
 class QuestionDetail(generic.DetailView):
     model = models.Question
     # template_name = 'questions/question_detail.html'
+    success_url = reverse_lazy('questions:single')
 
 class QuestionDelete(generic.DeleteView):
     model = models.Question

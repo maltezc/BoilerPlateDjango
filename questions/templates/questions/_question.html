@@ -5,5 +5,4 @@
 <h3>{{ question.question_html|safe }}</h3>
 <h3>{{ question.answer_html|safe }}</h3>
 
-this is an individual question from _question.html figure it out
-
+<a href="{% url 'questions:single' pk=question.pk %}"> single question view</a></a>
