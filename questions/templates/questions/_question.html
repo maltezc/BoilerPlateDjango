@@ -5,5 +5,5 @@
 <h3>{{ question.question_html|safe }}</h3>
 <h3>{{ question.answer_html|safe }}</h3>
 
-<a href="{% url 'questions:single' pk=question.pk %}"> single question view</a></a>
+<a href="{% url 'questions:detail' pk=question.pk %}"> single question view</a></a>
 

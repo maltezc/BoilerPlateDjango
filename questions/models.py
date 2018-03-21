@@ -29,14 +29,13 @@ class Question(models.Model):
     def save(self, *args, **kwargs):
         self.question_html = misaka.html(self.question)
         self.answer_html = misaka.html(self.answer)
-
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse(
-            "questions:single",
+            "questions:detail",
             kwargs={
-                "username": self.user.username,
+                # "username": self.user.username,
                 "pk": self.pk
             }
         )

@@ -28,17 +28,13 @@ class QuestionList(generic.ListView):
 
 class CreateQuestion(generic.CreateView):
     model = models.Question
-    # model = models.Answer
-    form = QuestionForm
+    form_class = QuestionForm
     fields = ('question', 'answer')
+    template_name = "questions/question_form_create.html"
     success_url = reverse_lazy('questions:all')
+    # template name is NECESSARY FOR CREATE
 
 
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.user = self.request.user
-        self.object.save()
-        return super().form_valid(form)
 
 
 class QuestionDetail(generic.DetailView):
@@ -49,10 +45,8 @@ class QuestionDetail(generic.DetailView):
 class QuestionUpdate(generic.UpdateView):
     model = models.Question
     form_class = QuestionForm
-    # context_object_name = 'question'
-    # success_url = reverse_lazy('questions:single')
-    # fields = ('question', 'answer')
-    # template_name_suffix = '_form'
+    template_name = "questions/question_form_update.html"
+    #template name is NECESSARY FOR UPDATE
 
 
 
