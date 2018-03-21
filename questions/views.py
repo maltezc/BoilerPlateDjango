@@ -35,8 +35,6 @@ class CreateQuestion(generic.CreateView):
     # template name is NECESSARY FOR CREATE
 
 
-
-
 class QuestionDetail(generic.DetailView):
     model = models.Question
     # template_name = 'questions/question_detail.html'
@@ -47,7 +45,6 @@ class QuestionUpdate(generic.UpdateView):
     form_class = QuestionForm
     template_name = "questions/question_form_update.html"
     #template name is NECESSARY FOR UPDATE
-
 
 
 

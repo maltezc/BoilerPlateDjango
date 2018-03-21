@@ -10,6 +10,6 @@ urlpatterns = [
     url(r'questionupdate/(?P<pk>\d+)/$', views.QuestionUpdate.as_view(), name='update'),
     # url(r'by/(?P<username>[-\w]+)/(?P<pk>\d+)/$', views.QuestionDetail.as_view(), name="single"),
     url(r'questiondetail/(?P<pk>\d+)/$', views.QuestionDetail.as_view(), name='detail'),
-    # url(r'delete/(?P<pk>\d+)/$', views.DeleteQuestion.as_view(), name='delete'),
+    url(r'delete/(?P<pk>\d+)/$', views.QuestionDelete.as_view(), name='delete'),
 
 ]
