@@ -1,6 +1,7 @@
 admin: chrismaltez
 email: cflux.maltez@live.com
-password: liquid101
+password: LiquidUserTest101$
+
 
 
 for git:
