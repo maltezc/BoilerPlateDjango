@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import User
 from questions import models
 
 
@@ -7,6 +8,7 @@ class QuestionForm(forms.ModelForm):
     class Meta:
         fields = ("question", 'answer')
         model = models.Question
+
 
 
 

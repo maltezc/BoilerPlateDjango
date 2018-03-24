@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
+
 from django.core.urlresolvers import reverse_lazy
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from django.shortcuts import get_object_or_404
 import requests
 from django.utils import timezone
-from django.shortcuts import redirect
+
 
 
 from .forms import QuestionForm
@@ -37,14 +39,14 @@ class CreateQuestion(generic.CreateView):
 
 class QuestionDetail(generic.DetailView):
     model = models.Question
-    # template_name = 'questions/question_detail.html'
+
 
 
 class QuestionUpdate(generic.UpdateView):
     model = models.Question
     form_class = QuestionForm
     template_name = "questions/question_form_update.html"
-    #template name is NECESSARY FOR UPDATE
+    #template name is NECESSARY FOR UPDATE instead of saving another
 
 
 
@@ -55,3 +57,12 @@ class QuestionDelete(generic.DeleteView):
     def delete(self, *args, **kwargs):
         messages.success(self.request, "Question Deleted")
         return super().delete(*args, **kwargs)
+
+
+
+
+
+
+
+
+
