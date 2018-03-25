@@ -3,7 +3,7 @@
 {% block content %}
     this is the question detail view
 
-{# TODO: who posted it#}
+{# TODO: who posted it #}
 
 {# COMPLETE: TO DO: what is the question#}
 <h3>{{ question.question_html|safe }}</h3>
@@ -11,9 +11,9 @@
 {# COMPLETE: TO DO: what is the answer#}
 <h3>{{ question.answer_html|safe }}</h3>
 
-{# TODO: what are comments?#}
+{# TODO: what are comments? #}
 
-{# TODO: show tags#}
+{# TODO: Create tags #}
 
 {# COMPLETE: TO DO: add update button#}
 <a href="{% url 'questions:update' pk=question.pk %}"> Update Question</a>

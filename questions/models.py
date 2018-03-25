@@ -14,6 +14,7 @@ class Question(models.Model):
     class Meta:
         ordering = ['-date_updated']
     # user = models.ForeignKey(User, related_name="question", default='')
+    # TODO: get user working^
     question = models.TextField(blank=False, null=False) # unique=True,
     question_html = models.TextField(blank=False, null=False)
     answer = models.TextField(blank=False, null=False)
