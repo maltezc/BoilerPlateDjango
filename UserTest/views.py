@@ -15,5 +15,9 @@ class HomePage(TemplateView):
     #     return super().get(request, *args, **kwargs)
 
 
-class TestPage(TemplateView):
-    template_name = 'test.html'
+# class TestPage(TemplateView):
+#     template_name = 'test.html'
+
+
+class ThanksPage(TemplateView):
+    template_name = 'thanks.html'

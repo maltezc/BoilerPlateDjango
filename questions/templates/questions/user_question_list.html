@@ -1,0 +1,18 @@
+{% extends "questions/question_base.html" %}
+
+
+
+{% block pre_question %}
+<div class="col-md-4">
+	<h1>@{{ question_user.username }}</h1>
+	<p>Question History</p>
+</div>
+{% endblock %}
+
+{% block question_content %}
+<div class="col-md-8">
+	{% for question in question_list %}
+		{% include "questions/_question.html" %}
+	{% endfor %}
+</div>
+{% endblock %}
