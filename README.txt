@@ -6,6 +6,9 @@ password: LiquidUserTest101$
 
 for git:
 
+git log
+# ^ shows previous commit history
+
 git status
 git add .
 # ^ . will add all, otherwise specify file
@@ -21,3 +24,12 @@ git push -u origin master
 
 git pull
 # pulls it down from the repository
+
+
+
+
+
+
+
+
+

@@ -9,6 +9,9 @@ from django.shortcuts import get_object_or_404
 import requests
 from django.utils import timezone
 
+from taggit.models import Tag
+
+
 
 
 from .forms import QuestionForm
@@ -24,6 +27,13 @@ User = get_user_model()
 
 #views go here
 
+class TagMixin(object):
+    def get_context_data(self, kwargs):
+        context = super(TagMixin, self).get_context_data(kwargs)
+        context['tags'] = Tag.objects.all()
+        return context
+
+
 class QuestionList(generic.ListView):
     # ^ took out SelectRelatedMixin, replace when ready
     model = models.Question
@@ -32,10 +42,16 @@ class QuestionList(generic.ListView):
 class CreateQuestion(generic.CreateView):
     model = models.Question
     form_class = QuestionForm
-    # fields = ('question', 'answer')
     template_name = "questions/question_form_create.html"
     success_url = reverse_lazy('questions:all')
     # template name is NECESSARY FOR CREATE
+    # fields = ('question', 'answer') <-- cant have fields and form_class in same view
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
 
 
 class UserQuestions(generic.ListView):
@@ -57,13 +73,6 @@ class UserQuestions(generic.ListView):
         context = super().get_context_data(**kwargs)
         context["question_user"] = self.question_user
         return context
-
-
-
-
-
-
-
 
 
 

@@ -3,7 +3,10 @@
 {% block content %}
     this is the question detail view
 
-{# TODO: who posted it #}
+
+
+<h3><a href="#">{{ question.user }}</a></h3>
+{# TODO: create user profile page and user questions list page #}
 
 {# COMPLETE: TO DO: what is the question#}
 <h3>{{ question.question_html|safe }}</h3>
@@ -16,12 +19,12 @@
 {# TODO: Create tags #}
 
 {# COMPLETE: TO DO: add update button#}
-<a href="{% url 'questions:update' pk=question.pk %}"> Update Question</a>
+<a href="{% url 'questions:update' slug=question.slug pk=question.pk %}"> Update Question</a>
 
 {# COMPLETE: TO DO: add delete button#}
 <div class="media-footer">
 {#	{% if user.is_authenticated and post.user == user and not hide_delete %}#}
-        <a href="{% url 'questions:delete' pk=question.pk %}" title="delete" class="btn btn-simple">
+        <a href="{% url 'questions:delete' slug=question.slug pk=question.pk %}" title="delete" class="btn btn-simple">
             <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
             <span class="text-danger icon-label">Delete</span>
         </a>

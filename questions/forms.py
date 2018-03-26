@@ -13,5 +13,3 @@ class QuestionForm(forms.ModelForm):
 
 
 
-
-

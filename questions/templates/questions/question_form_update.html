@@ -4,7 +4,7 @@
 
 {% block content %}
 <h4>Update Question</h4>
-<form method="POST" action="{% url 'questions:update' pk=question.pk %}" id="questionForm">
+<form method="POST" action="{% url 'questions:update' slug=question.slug pk=question.pk %}" id="questionForm">
 	{% csrf_token %}
 	{% bootstrap_form form %}
 	<input type="submit" value="Update" class="btn btn-primary btn-large">
