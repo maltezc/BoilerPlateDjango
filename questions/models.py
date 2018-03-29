@@ -41,7 +41,7 @@ class Question(models.Model):
         return reverse(
             "questions:detail",
             kwargs={
-                # "slug": self.slug,
+                "slug": self.slug,
                 "pk": self.pk
             }
         )

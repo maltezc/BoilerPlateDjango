@@ -80,7 +80,6 @@ class QuestionDetail(generic.DetailView):
     model = models.Question
 
 
-
 class QuestionUpdate(generic.UpdateView):
     model = models.Question
     form_class = QuestionForm
