@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from taggit.managers import TaggableManager
-
+from django.db.models.signals import pre_save
+from django.utils.text import slugify
 
 import misaka # http://misaka.61924.nl/
 #Misaka is a CFFI-based binding for Hoedown, a fast markdown processing library written in C.
@@ -22,7 +23,7 @@ class Question(models.Model):
     answer_html = models.TextField(blank=False, null=False)
     date_created = models.DateTimeField(auto_now=True, null=True)
     date_updated = models.DateTimeField(auto_now=True, null=True)
-    slug = models.SlugField(max_length=60)
+    slug = models.SlugField(unique=True, default='')
     tags = TaggableManager()
 
 
@@ -44,3 +45,29 @@ class Question(models.Model):
                 "pk": self.pk
             }
         )
+
+def create_slug(instance, new_slug=None):
+    slug = slugify(instance.question)
+    if new_slug is not None:
+        slug = new_slug
+    qs = Question.objects.filter(slug=slug).order_by("-id")
+    exists = qs.exists()
+    if exists:
+        new_slug = "%s-%s" %(slug, qs.first().id)
+        return create_slug(instance, new_slug=new_slug)
+    return slug
+
+
+def pre_save_question_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = create_slug(instance)
+
+
+    # slug = slugify(instance.question)
+    # exists = Question.objects.filter(slug=slug).exists()
+    # if exists:
+    #     slug = "%s-%s" %(slug, instance.id)
+    # instance.slug = slug
+
+pre_save.connect(pre_save_question_receiver, sender=Question)
+
