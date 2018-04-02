@@ -11,15 +11,15 @@ from django.utils import timezone
 
 from taggit.models import Tag
 
-
+from django.contrib.auth.decorators import login_required
 
 
 from .forms import QuestionForm
-from .models import Question
+from .models import Question, Comment
 
 # Create your views here.
 from . import models
-from .forms import QuestionForm
+from .forms import QuestionForm, CommentForm
 # from braces.views import SelectRelatedMixin
 
 from django.contrib.auth import get_user_model
@@ -99,8 +99,29 @@ class QuestionDelete(generic.DeleteView):
 
 
 
+def add_comment(request, pk, slug):
+    question = get_object_or_404(Question, pk=pk,slug=slug)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.question = question
+            comment.save()
+            return redirect('questions:detail', pk=question.pk, slug=question.slug)
+    else:
+        form = CommentForm()
+    return render(request, 'questions/add_comment.html', {'form': form})
+
+@login_required
+def comment_approve(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    comment.approve()
+    return redirect('question:detail', pk=comment.question.pk)
 
 
-
-
+@login_required
+def comment_remove(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    comment.delete()
+    return redirect('question:detail', pk=comment.question.pk)
 
