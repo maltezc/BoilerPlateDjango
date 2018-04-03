@@ -40,6 +40,7 @@
 
     					<ul class="nav navbar-nav navbar-right">
     						{% if user.is_authenticated %}
+                        <li>hello {{ question.user }}</li>
                         <li><a href="{% url 'questions:create' %}" class="btn btn-simple">Create a Question</a></li>
                         <li><a href="{% url 'questions:all' %}">Questions List Home</a></li>
                         <li><a href="{% url 'accounts:logout' %}" class="btn btn-simple">Log out</a></li>

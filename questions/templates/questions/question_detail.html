@@ -18,19 +18,11 @@
 <a class="btn btn-default" href="{% url 'questions:add_comment' slug=question.slug pk=question.pk %}">Add comment</a>
 
 {% for comment in question.comments.all %}
-    {% if user.is_authenticated or comment.approved_comment %}
-        <div class="comments">
-            <div class="date">
-            {{ comment.created_date }}
-                {% if not comment.approved_comment %}
-                    <a class="btn btn-default" href="{% url 'questions:comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-                    <a class="btn btn-default" href="{% url 'questions:comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
-                {% endif %}
-            </div>
+    <div class="comment">
+        <div class="date">{{ comment.date_created }}</div>
         <strong>{{ comment.author }}</strong>
         <p>{{ comment.text|linebreaks }}</p>
-        </div>
-    {% endif %}
+    </div>
 {% empty %}
         <p>No comments here yet</p>
 {% endfor %}
@@ -59,7 +51,24 @@
 
 
 
+{#for approving and disproving comments, see below#}
 
-
+{#{% for comment in question.comments.all %}#}
+{#    {% if user.is_authenticated or comment.approved_comment %}#}
+{#        <div class="comments">#}
+{#            <div class="date">#}
+{#            {{ comment.created_date }}#}
+{#                {% if not comment.approved_comment %}#}
+{#                    <a class="btn btn-default" href="{% url 'questions:comment_remove' slug=comment.question.slug pk=comment.question.pk %}"><span class="glyphicon glyphicon-remove"></span></a>#}
+{#                    <a class="btn btn-default" href="{% url 'questions:comment_approve' slug=comment.question.slug pk=comment.question.pk %}"><span class="glyphicon glyphicon-ok"></span></a>#}
+{#                {% endif %}#}
+{#            </div>#}
+{#        <strong>{{ comment.author }}</strong>#}
+{#        <p>{{ comment.text|linebreaks }}</p>#}
+{#        </div>#}
+{#    {% endif %}#}
+{#{% empty %}#}
+{#        <p>No comments here yet</p>#}
+{#{% endfor %}#}
 
 

@@ -100,7 +100,7 @@ class QuestionDelete(generic.DeleteView):
 
 
 def add_comment(request, pk, slug):
-    question = get_object_or_404(Question, pk=pk,slug=slug)
+    question = get_object_or_404(Question, pk=pk)
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -112,16 +112,18 @@ def add_comment(request, pk, slug):
         form = CommentForm()
     return render(request, 'questions/add_comment.html', {'form': form})
 
-@login_required
-def comment_approve(request, pk):
-    comment = get_object_or_404(Comment, pk=pk)
-    comment.approve()
-    return redirect('question:detail', pk=comment.question.pk)
 
-
-@login_required
-def comment_remove(request, pk):
-    comment = get_object_or_404(Comment, pk=pk)
-    comment.delete()
-    return redirect('question:detail', pk=comment.question.pk)
+# @login_required
+# def comment_approve(request, pk, slug):
+#     comment = get_object_or_404(Comment, pk=pk, slug=slug)
+#     comment.approve()
+#     return redirect('question:detail', pk=comment.question.pk, slug=comment.question.slug)
+#
+#
+# @login_required
+# def comment_remove(request, pk, slug):
+#     comment = get_object_or_404(Comment, pk=pk, slug=slug)
+#     comment.delete()
+#     return redirect('question:detail', pk=comment.question.pk, slug=comment.question.slug)
+#
 

@@ -75,16 +75,16 @@ class Comment(models.Model):
     question = models.ForeignKey(Question, related_name='comments')
     author = models.CharField(max_length=200)
     text = models.TextField(null=False, blank=False, default='')
-    date_created = models.DateTimeField(auto_now=True, null=True)
-    approved_comment = models.BooleanField(default=False)
-
-    def approve(self):
-        self.approved_comment = True
-        self.save()
+    date_created = models.DateTimeField(default=timezone.now)
+    # approved_comment = models.BooleanField(default=False)
 
     def __str__(self):
         return self.text
 
 
-def approved_comments(self):
-    return self.comments.filter(approved_comment=True)
+    # def approve(self):
+    #     self.approved_comment = True
+    #     self.save()
+
+    # def approved_comments(self):
+#     return self.comments.filter(approved_comment=True)

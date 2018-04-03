@@ -12,9 +12,9 @@ urlpatterns = [
     url(r'delete/(?P<slug>[\w-]+)/(?P<pk>\d+)/$', views.QuestionDelete.as_view(), name='delete'),
     #comments
     url(r'questioncomments/(?P<slug>[\w-]+)/(?P<pk>\d+)/$', views.add_comment, name='add_comment'),
-    url(r'questioncomments/approve/(?P<pk>\d+)/$', views.comment_approve, name='comment_approve'),
-    url(r'questioncomments/remove/(?P<pk>\d+)/$', views.comment_remove, name='comment_remove'),
 
 ]
 
+    # url(r'questioncomments/approve/(?P<slug>[\w-]+)/(?P<pk>\d+)/$', views.comment_approve, name='comment_approve'),
+    # url(r'questioncomments/remove/(?P<slug>[\w-]+)/(?P<pk>\d+)/$', views.comment_remove, name='comment_remove'),
 

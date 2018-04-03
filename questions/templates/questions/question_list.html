@@ -4,7 +4,7 @@
 <div class="col-md-8">
 	{% for question in question_list %}
         {% include "questions/_question.html" %}
-        <a href="{% url 'questions:detail' slug=question.slug pk=question.pk %}">Comments: {{ question.approved_comments.count }}</a>
+        <a href="{% url 'questions:detail' slug=question.slug pk=question.pk %}">Comments: {{ question.comments.count }}</a>
 
 	{% endfor %}
 </div>
