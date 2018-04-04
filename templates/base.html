@@ -36,13 +36,14 @@
 
 <nav class="navbar mynav" role="navigation" id="navbar">
     			<div class="container">
-            <a class="navbar-brand mynav" href="{% url 'questions:all' %}">WebSiteName</a>
+            <a class="navbar-brand mynav" href="{% url 'questions:all' %}">WebSiteIcon</a>
 
     					<ul class="nav navbar-nav navbar-right">
     						{% if user.is_authenticated %}
                         <li>hello {{ question.user }}</li>
-                        <li><a href="{% url 'questions:create' %}" class="btn btn-simple">Create a Question</a></li>
-                        <li><a href="{% url 'questions:all' %}">Questions List Home</a></li>
+                        <li><a href="{% url 'questions:create' %}" class="glyphicon glyphicon-plus-sign"></a></li>
+                        <li><a href="{% url 'questions:all' %}" class="glyphicon glyphicon-home"></a></li>
+                        <li><a href="{% url 'questions:for_user' username=question.user.username %}" class="glyphicon glyphicon-user"></a></li>
                         <li><a href="{% url 'accounts:logout' %}" class="btn btn-simple">Log out</a></li>
     						{% else %}
     						      <li><a href="{% url 'accounts:login' %}" class="btn btn-simple">Log in</a></li>

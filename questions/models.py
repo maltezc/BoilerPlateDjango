@@ -15,7 +15,7 @@ User = get_user_model()
 class Question(models.Model):
     class Meta:
         ordering = ['-date_updated']
-    user = models.ForeignKey(User, related_name="question")
+    user = models.ForeignKey(User, related_name="questions")
     # completedTODO: get user working^
     question = models.TextField(blank=False, null=False) # unique=True,
     question_html = models.TextField(blank=False, null=False)
@@ -42,7 +42,9 @@ class Question(models.Model):
             "questions:detail",
             kwargs={
                 "slug": self.slug,
-                "pk": self.pk
+                "pk": self.pk,
+                "username": self.user.username,
+
             }
         )
 
