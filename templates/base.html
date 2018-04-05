@@ -43,7 +43,8 @@
                         <li>hello {{ question.user }}</li>
                         <li><a href="{% url 'questions:create' %}" class="glyphicon glyphicon-plus-sign"></a></li>
                         <li><a href="{% url 'questions:all' %}" class="glyphicon glyphicon-home"></a></li>
-                        <li><a href="{% url 'questions:for_user' username=user.username %}" class="glyphicon glyphicon-user"></a></li>
+                        {# completedTODO: create user questions list page #}
+                        <li><a href="{% url 'questions:for_user' username=user.username %}" class="glyphicon glyphicon-user"></a></li>{# question is not needed in question.user.username in this case. find out why #}
                         <li><a href="{% url 'accounts:logout' %}" class="btn btn-simple">Log out</a></li>
     						{% else %}
     						      <li><a href="{% url 'accounts:login' %}" class="btn btn-simple">Log in</a></li>

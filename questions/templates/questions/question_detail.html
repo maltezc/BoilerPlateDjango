@@ -6,15 +6,17 @@
 
 
 <h3><a href="#">{{ question.user }}</a></h3>
-{# TODO: create user profile page and user questions list page #}
+{# TODO: create user profile page #}
 
-{# COMPLETE: TO DO: what is the question#}
+
+
 <h3>{{ question.question_html|safe }}</h3>
+{# COMPLETE: TO DO: what is the question#}
 
 {# COMPLETE: TO DO: what is the answer#}
 <h3>{{ question.answer_html|safe }}</h3>
 
-{# TODO: what are comments? #}
+{# completedTODO: what are comments? #}
 <a class="btn btn-default" href="{% url 'questions:add_comment' slug=question.slug pk=question.pk %}">Add comment</a>
 
 {% for comment in question.comments.all %}
