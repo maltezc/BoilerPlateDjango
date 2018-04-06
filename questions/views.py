@@ -57,7 +57,7 @@ class CreateQuestion(generic.CreateView):
 class UserQuestions(generic.ListView):
     model = models.Question
     template_name = "questions/user_question_list.html"
-    # TODO: CREATE user_question_list.html
+    # completedTODO: CREATE user_question_list.html
 
     def get_queryset(self):
         try:

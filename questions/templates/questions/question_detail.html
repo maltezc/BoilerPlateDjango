@@ -5,8 +5,8 @@
 
 
 
-<h3><a href="#">{{ question.user }}</a></h3>
 {# TODO: create user profile page #}
+<h3><a href="{% url 'questions:for_user' username=user %}">{{ question.user }}</a></h3>{# (username=user.username) question is not needed in question.user.username in this case. find out why #}
 
 
 

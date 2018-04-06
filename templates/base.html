@@ -40,7 +40,7 @@
 
     					<ul class="nav navbar-nav navbar-right">
     						{% if user.is_authenticated %}
-                        <li>hello {{ question.user }}</li>
+                        <li>hello {{ user.username }}</li>
                         <li><a href="{% url 'questions:create' %}" class="glyphicon glyphicon-plus-sign"></a></li>
                         <li><a href="{% url 'questions:all' %}" class="glyphicon glyphicon-home"></a></li>
                         {# completedTODO: create user questions list page #}
