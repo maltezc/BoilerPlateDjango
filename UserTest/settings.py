@@ -43,13 +43,11 @@ INSTALLED_APPS = [
     'accounts',
     'questions',
 
-
-
-
     #3rd party apps
     'django_extensions',
     'bootstrap3',
-    'taggit'
+    'taggit',
+    'updown',
 ]
 
 MIDDLEWARE = [

@@ -10,6 +10,9 @@ import misaka # http://misaka.61924.nl/
 # It features a fast HTML renderer and functionality to make custom renderers (e.g. man pages or LaTeX).
 from django.utils import timezone
 
+from django.db import models
+from updown.fields import RatingField
+
 User = get_user_model()
 
 class Question(models.Model):
@@ -25,6 +28,8 @@ class Question(models.Model):
     date_updated = models.DateTimeField(auto_now=True, null=True)
     slug = models.SlugField(unique=True, default='')
     tags = TaggableManager()
+    rating = RatingField(can_change_vote=True)
+
 
 
     def __str__(self):

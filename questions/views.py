@@ -32,6 +32,7 @@ class TagMixin(object):
         context = super(TagMixin, self).get_context_data(kwargs)
         context['tags'] = Tag.objects.all()
         return context
+    #^brings in tags
 
 
 class QuestionList(generic.ListView):
@@ -78,6 +79,13 @@ class UserQuestions(generic.ListView):
 
 class QuestionDetail(generic.DetailView):
     model = models.Question
+
+    def upvote(self):
+        question = Question.objects.get(pk=Question.pk)
+        question.score += 1
+        question.save()
+        return question.score
+        # return HttpResponse('your-photo-list-view')
 
 
 class QuestionUpdate(generic.UpdateView):

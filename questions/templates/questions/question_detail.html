@@ -16,6 +16,10 @@
 {# COMPLETE: TO DO: what is the answer#}
 <h3>{{ question.answer_html|safe }}</h3>
 
+
+<a href="upvote/{{ question.pk }}">up</a>
+<a href="downvote/{{ question.pk }}">down</a>
+
 {# completedTODO: what are comments? #}
 <a class="btn btn-default" href="{% url 'questions:add_comment' slug=question.slug pk=question.pk %}">Add comment</a>
 
