@@ -28,8 +28,10 @@ class Question(models.Model):
     date_updated = models.DateTimeField(auto_now=True, null=True)
     slug = models.SlugField(unique=True, default='')
     tags = TaggableManager()
+    # TODO: create up vote system
     rating = RatingField(can_change_vote=True)
-
+    # TODO: create replies to comments system
+    
 
 
     def __str__(self):
@@ -97,4 +99,4 @@ class Comment(models.Model):
 #     return self.comments.filter(approved_comment=True)
 
 # TODO: create point system
-# TODO: create up vote system
+
